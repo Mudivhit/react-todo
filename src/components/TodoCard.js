@@ -35,7 +35,7 @@ export default function TodoCard() {
       setEditingTaskId(null);
       setEditedTaskData({});
     } catch (error) {
-      console.error("Error editing task:", error);
+      alert("Error editing task:", error);
     }
   };
 
@@ -63,16 +63,16 @@ export default function TodoCard() {
       await axiosInstance.put(`${apiUrl}/tasks/${id}`, newData);
       fetchTasks();
     } catch (error) {
-      console.error("Error editing task:", error);
+      alert("Error editing task:", error);
     }
   };
 
   const createTask = async (newTask) => {
     try {
-      const response = await axiosInstance.post(`${apiUrl}/tasks`, newTask);
+      await axiosInstance.post(`${apiUrl}/tasks`, newTask);
       fetchTasks();
     } catch (error) {
-      console.error("Error creating task:", error);
+      alert("Error creating task:", error);
     }
   };
 
@@ -82,7 +82,7 @@ export default function TodoCard() {
         const response = await axiosInstance.get(`${apiUrl}/tasks`);
         setTasks(response.data);
       } catch (error) {
-        console.error("Error fetching tasks:", error);
+        alert("Error fetching tasks:", error);
       }
     }
   };
@@ -91,7 +91,7 @@ export default function TodoCard() {
       await axiosInstance.delete(`/tasks/${id}`);
       fetchTasks();
     } catch (error) {
-      console.error("Error deleting task:", error);
+      alert("Error deleting task:", error);
     }
   };
 
